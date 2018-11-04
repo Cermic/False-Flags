@@ -156,6 +156,50 @@ MonoBehaviour:
       - answerText: But Greg, there is no flag yet
         isCorrect: 1
       flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
+    - questionText: Guess the flag
+      answers:
+      - answerText: No
+        isCorrect: 0
+      - answerText: Yes Please!
+        isCorrect: 0
+      - answerText: France
+        isCorrect: 0
+      - answerText: But Greg, there is no flag yet
+        isCorrect: 1
+      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
+    - questionText: Guess the flag
+      answers:
+      - answerText: No
+        isCorrect: 0
+      - answerText: Yes Please!
+        isCorrect: 0
+      - answerText: France
+        isCorrect: 0
+      - answerText: But Greg, there is no flag yet
+        isCorrect: 1
+      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
+    - questionText: Guess the flag
+      answers:
+      - answerText: No
+        isCorrect: 0
+      - answerText: Yes Please!
+        isCorrect: 0
+      - answerText: France
+        isCorrect: 0
+      - answerText: But Greg, there is no flag yet
+        isCorrect: 1
+      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
+    - questionText: Guess the flag
+      answers:
+      - answerText: No
+        isCorrect: 0
+      - answerText: Yes Please!
+        isCorrect: 0
+      - answerText: France
+        isCorrect: 0
+      - answerText: But Greg, there is no flag yet
+        isCorrect: 1
+      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
 --- !u!4 &1734644645
 Transform:
   m_ObjectHideFlags: 0

@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour {
 
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
-    public Scrollbar progressBar;
+    //variable for the progress bar
+    private Scrollbar progressBar;
 
 
     // Use this for initialization
@@ -33,6 +34,9 @@ public class GameController : MonoBehaviour {
         questionPool = currentRoundData.questions;
         timeRemaining = currentRoundData.timeLimitInSeconds;
         UpdateTimeRemaningDisplay();
+
+        //finds the Scrollbar component in the scene and initialises progressBar to it
+        progressBar = FindObjectOfType<Scrollbar>();
 
         playerScore = 0;
         questionIndex = 0;
@@ -114,6 +118,13 @@ public class GameController : MonoBehaviour {
 	void Update () {
         if (isRoundActive)
         {
+            //sets the amount of steps in the progress bar to be the same as the total number of questions.
+            progressBar.numberOfSteps = questionPool.Length;
+            //changes the value (position) of the progress bars highlighted element to indicate the current question using its index
+            progressBar.value = 0.1f + (1f / progressBar.numberOfSteps) * questionIndex;
+            //scales the size of the highlighted progress bar element to be in relation to the total number of questions, i.e. if there are 2 questions it will take up 50%
+            progressBar.size = 1f / questionPool.Length;
+
             timeRemaining -= Time.deltaTime;
             UpdateTimeRemaningDisplay();
 
