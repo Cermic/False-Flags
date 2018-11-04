@@ -105,6 +105,9 @@ public class GameController : MonoBehaviour {
 
     public void ReturnToMenu()
     {
+        FindObjectOfType<AudioManager>().Stop("Werq"); // Stop Game Music
+        FindObjectOfType<AudioManager>().Play("Button_Click"); // Play button click sound
+        FindObjectOfType<AudioManager>().Play("Getting_it_Done"); // Play menu music
         SceneManager.LoadScene("MenuScreen");
     }
 

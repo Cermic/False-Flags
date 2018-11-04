@@ -22,6 +22,7 @@ public class AnswerButton : MonoBehaviour {
 
 public void HandleClick()
     {
+        FindObjectOfType<AudioManager>().Play("Button_Click"); // Play button click sound
         gameController.AnswerButtonClicked(answerData.isCorrect);
     }
 }
