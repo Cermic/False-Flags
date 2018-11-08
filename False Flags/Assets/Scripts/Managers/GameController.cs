@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
     public Text questionDisplayText;
     public Text scoreDisplayText;
     public Text timeRemaningDisplayText;
+    public Text highScoreDisplay;
     public SimpleObjectPool answerButtonObjectPool;
     public Transform answerButtonParent;
     public GameObject questionDisplay, roundEndDisplay;
@@ -99,6 +100,9 @@ public class GameController : MonoBehaviour {
     public void EndRound()
     {
         isRoundActive = false;
+        dataController.SubmitNewPlayerScore(playerScore);
+        highScoreDisplay.text = "High score: " + dataController.GetHighestPlayerScore().ToString();
+
         questionDisplay.SetActive (false);
         roundEndDisplay.SetActive (true);
     }
