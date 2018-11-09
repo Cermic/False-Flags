@@ -1,7 +1,1 @@
-{"allRoundData":
-[{"name":"Flags", "timeLimitInSeconds":30,"basePointsAdded":10,"questions":
-[{"questionText":"Guess the flag","answers":
-[{"answerText":"No","isCorrect":false},
-{"answerText":"Yes please!","isCorrect":false},
-{"answerText":"France","isCorrect":false},
-{"answerText":"But Greg, there is no flag yet","isCorrect":true}]}]}]}
+{"allRoundData":[{"name":"Flags","timeLimitInSeconds":30,"pointsAddedForCorrectAnswer":0,"questions":[{"questionText":"Guess the flag","answers":[{"answerText":"No","isCorrect":false},{"answerText":"Yes please!","isCorrect":false},{"answerText":"France","isCorrect":false},{"answerText":"But Greg, there is no flag yet","isCorrect":true}],"flag":"us"}]}]}
