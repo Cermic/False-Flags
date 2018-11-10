@@ -181,6 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1734644645}
   - component: {fileID: 1734644644}
+  - component: {fileID: 1734644646}
   m_Layer: 0
   m_Name: DataController
   m_TagString: Untagged
@@ -199,66 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a39f4815612f14b9f2a44a53b18c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allRoundData:
-  - name: Round Zero
-    timeLimitInSeconds: 100
-    pointsAddedForCorrectAnswer: 10
-    questions:
-    - questionText: Guess the flag
-      answers:
-      - answerText: No
-        isCorrect: 0
-      - answerText: Yes Please!
-        isCorrect: 0
-      - answerText: France
-        isCorrect: 0
-      - answerText: But Greg, there is no flag yet
-        isCorrect: 1
-      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
-    - questionText: Guess the flag
-      answers:
-      - answerText: No
-        isCorrect: 0
-      - answerText: Yes Please!
-        isCorrect: 0
-      - answerText: France
-        isCorrect: 0
-      - answerText: But Greg, there is no flag yet
-        isCorrect: 1
-      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
-    - questionText: Guess the flag
-      answers:
-      - answerText: No
-        isCorrect: 0
-      - answerText: Yes Please!
-        isCorrect: 0
-      - answerText: France
-        isCorrect: 0
-      - answerText: But Greg, there is no flag yet
-        isCorrect: 1
-      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
-    - questionText: Guess the flag
-      answers:
-      - answerText: No
-        isCorrect: 0
-      - answerText: Yes Please!
-        isCorrect: 0
-      - answerText: France
-        isCorrect: 0
-      - answerText: But Greg, there is no flag yet
-        isCorrect: 1
-      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
-    - questionText: Guess the flag
-      answers:
-      - answerText: No
-        isCorrect: 0
-      - answerText: Yes Please!
-        isCorrect: 0
-      - answerText: France
-        isCorrect: 0
-      - answerText: But Greg, there is no flag yet
-        isCorrect: 1
-      flag: {fileID: 2800000, guid: fcceca3c634a6274f9ee2b00f06d29c0, type: 3}
 --- !u!4 &1734644645
 Transform:
   m_ObjectHideFlags: 0
@@ -272,3 +213,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1734644646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734644643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de358989920dbd64096f61e6f77d6d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
