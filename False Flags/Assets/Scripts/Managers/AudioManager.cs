@@ -46,9 +46,9 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name); // Find the corresponding sound's name in sounds array.
         if (s == null)
         {
-            EditorUtility.DisplayDialog("Sound Load Error" ,
-                "Sound: " + name  + " was not loaded correctly! "
-                + "\n Check name spellings.", "OK");
+            //EditorUtility.DisplayDialog("Sound Load Error" ,
+            //    "Sound: " + name  + " was not loaded correctly! "
+            //    + "\n Check name spellings.", "OK");
             return;
         }
         s.source.Play();
@@ -59,9 +59,9 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name); // Find the corresponding sound's name in sounds array.
         if (s == null)
         {
-            EditorUtility.DisplayDialog("Sound Stop Error",
-                "Sound: " + name + " was not stopped correctly! "
-                + "\n Check name spellings.", "OK");
+            //EditorUtility.DisplayDialog("Sound Stop Error",
+            //    "Sound: " + name + " was not stopped correctly! "
+            //    + "\n Check name spellings.", "OK");
             return;
         }
         s.source.Stop();

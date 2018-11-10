@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
     //variable for the progress bar
     private Scrollbar progressBar;
 
+    private InfoCardScript ics;
 
     // Use this for initialization
     void Start() {
@@ -38,6 +39,9 @@ public class GameController : MonoBehaviour {
 
         //finds the Scrollbar component in the scene and initialises progressBar to it
         progressBar = FindObjectOfType<Scrollbar>();
+
+        ics = FindObjectOfType<InfoCardScript>(); // This will work because there actually IS only ONE animtor in the scene.
+        // If more are to be added tags will need to be used.
 
         playerScore = 0;
         questionIndex = 0;
@@ -93,7 +97,13 @@ public class GameController : MonoBehaviour {
         }
         else
         {
+            questionIndex++;
             EndRound();
+        }
+
+        if (questionIndex % 5 == 0 && questionIndex != 0)
+        {
+            ics.SlideIn();
         }
     }
 
