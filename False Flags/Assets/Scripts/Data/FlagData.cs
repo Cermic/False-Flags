@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameData
-{
-    public RoundData[] allRoundData;
-    public FlagData[] flagData;
+public class FlagData {
 
+    public AnswerData[] answers;            //Testing purposes
 }
