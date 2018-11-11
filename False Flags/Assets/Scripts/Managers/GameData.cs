@@ -6,4 +6,6 @@ using UnityEngine;
 public class GameData
 {
     public RoundData[] allRoundData;
+    public FlagData[] flagData;
+
 }

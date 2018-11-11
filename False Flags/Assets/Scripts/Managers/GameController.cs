@@ -29,6 +29,9 @@ public class GameController : MonoBehaviour {
 
     private InfoCardScript ics;
 
+    //variable for the flag image
+    private Image questionFlag;
+
     // Use this for initialization
     void Start() {
         dataController = FindObjectOfType<DataController>();
@@ -36,6 +39,9 @@ public class GameController : MonoBehaviour {
         questionPool = currentRoundData.questions;
         timeRemaining = currentRoundData.timeLimitInSeconds;
         UpdateTimeRemaningDisplay();
+
+        //finds the game object with the "flag" tag and sets the questionflag variable to be its image component for flag image setting.
+        questionFlag = GameObject.FindGameObjectWithTag("flag").GetComponent<Image>();
 
         //finds the Scrollbar component in the scene and initialises progressBar to it
         progressBar = FindObjectOfType<Scrollbar>();
@@ -61,6 +67,10 @@ public class GameController : MonoBehaviour {
         RemoveAnswerButtons();
         QuestionData questionData = questionPool[questionIndex];
         questionDisplayText.text = questionData.questionText;
+
+        //changes the image on the flag display to be the one appropriate to the question by 
+        //looking in the images folder for the flag named the same as in the questions flag text field
+        questionFlag.sprite = Resources.Load<Sprite>("Images/"+questionData.flag);
 
         for(int i= 0;i< questionData.answers.Length; i++)
         {
