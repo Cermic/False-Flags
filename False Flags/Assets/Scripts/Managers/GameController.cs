@@ -70,7 +70,21 @@ public class GameController : MonoBehaviour {
 
         //changes the image on the flag display to be the one appropriate to the question by 
         //looking in the images folder for the flag named the same as in the questions flag text field
-        questionFlag.sprite = Resources.Load<Sprite>("Images/"+questionData.flag);
+        if (questionData.flag != null)
+        {
+            
+            if(Resources.Load<Sprite>("Images/" + questionData.flag))
+            {
+                questionFlag.sprite = Resources.Load<Sprite>("Images/" + questionData.flag);
+            }
+            else
+            {
+                Color tmp = questionFlag.color;
+                tmp.a = 0;
+            }
+        }
+        
+            
 
         for(int i= 0;i< questionData.answers.Length; i++)
         {
