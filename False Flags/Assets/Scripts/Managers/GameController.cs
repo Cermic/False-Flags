@@ -73,17 +73,17 @@ public class GameController : MonoBehaviour {
         //if ()
         //{
         string flagFilePath = " ";
-        bool found = false;
-        int c = 0;
-        while (!found) {
-            if (found = questionData.answers[c].isCorrect)
+
+        for(int i = 0; i < 4; i++)
+        {
+            if (questionData.answers[i].isCorrect==true)
             {
-                flagFilePath = questionData.answers[c].answerText;
-                found = true;
+                flagFilePath = questionData.answers[i].answerText;
+                break;
             }
-            c++;
         }
 
+        //questionFlag.sprite = Resources.Load("filepath", typeof(Sprite)) as Sprite;
         questionFlag.sprite = Resources.Load<Sprite>("Images/" + flagFilePath);
             
 
