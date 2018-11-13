@@ -70,24 +70,26 @@ public class GameController : MonoBehaviour {
 
         //changes the image on the flag display to be the one appropriate to the question by 
         //looking in the images folder for the flag named the same as in the questions flag text field
-        if (questionData.flag != null)
-        {
-            
-            if(Resources.Load<Sprite>("Images/" + questionData.flag))
+        //if ()
+        //{
+        string flagFilePath = " ";
+        bool found = false;
+        int c = 0;
+        while (!found) {
+            if (found = questionData.answers[c].isCorrect)
             {
-                questionFlag.sprite = Resources.Load<Sprite>("Images/" + questionData.flag);
+                flagFilePath = questionData.answers[c].answerText;
+                found = true;
             }
-            else
-            {
-                Color tmp = questionFlag.color;
-                tmp.a = 0;
-            }
+            c++;
         }
-        
+
+        questionFlag.sprite = Resources.Load<Sprite>("Images/" + flagFilePath);
             
 
-        for(int i= 0;i< questionData.answers.Length; i++)
+        for (int i = 0; i < questionData.answers.Length; i++)
         {
+
             GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
             answerButtonGameObjects.Add(answerButtonGameObject);
             answerButtonGameObject.transform.SetParent(answerButtonParent);

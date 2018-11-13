@@ -7,5 +7,5 @@ public class QuestionData {
 
     public string questionText;
     public AnswerData[] answers;            //Testing purposes
-    public string flag;
+    
 }
