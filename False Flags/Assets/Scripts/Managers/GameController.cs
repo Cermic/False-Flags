@@ -129,10 +129,9 @@ public class GameController : MonoBehaviour {
             questionIndex++;
             EndRound();
         }
-
         if (questionIndex % 5 == 0 && questionIndex != 0)
         {
-            infoText.text = transitionFactData[0].fact;
+            infoText.text = dataController.GetInfoData();///////////////////////////////////////////////////////////////////////////////////////
             ics.SlideIn();
         }
     }

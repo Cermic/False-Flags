@@ -30,9 +30,19 @@ public class DataController : MonoBehaviour {
         randomiser.RandomGeneration(allRoundData, flagData);
         return allRoundData[0];                     //return allRoundData[index];
     }
-	
-	// Update is called once per frame
-	void Update () {
+    private int RandomNumber(int num)
+    {
+        int value = (int)(Random.Range(0.0f, (float)num));
+        return value;
+    }
+    public string GetInfoData() //public RoundData GetCurrentRoundData(int index)/////////////////////////////////////////////////////////
+    {
+        return transitionFactData[RandomNumber(transitionFactData.Length)].fact;                     //
+    }
+
+
+    // Update is called once per frame
+    void Update () {
 			}
 
     public void SubmitNewPlayerScore(int newScore)

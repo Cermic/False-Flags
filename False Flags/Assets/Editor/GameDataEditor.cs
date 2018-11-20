@@ -8,7 +8,7 @@ public class GameDataEditor : EditorWindow {
 
     public GameData gameData;
 
-    private string gameDataFilePath = "/StreamingAssets/flag.json";
+    private string gameDataFilePath = "/StreamingAssets/transitionFacts.json";
 
     [MenuItem ("Window/Game Data Editor")]
     static void Init()
