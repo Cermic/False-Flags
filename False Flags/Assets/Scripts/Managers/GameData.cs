@@ -7,5 +7,5 @@ public class GameData
 {
     public RoundData[] allRoundData;
     public FlagData[] flagData;
-
+    public TransitionFactData[] transitionFactData;
 }

@@ -566,6 +566,8 @@ GameObject:
   - component: {fileID: 434374792}
   - component: {fileID: 434374791}
   - component: {fileID: 434374793}
+  - component: {fileID: 434374795}
+  - component: {fileID: 434374794}
   m_Layer: 5
   m_Name: GameController
   m_TagString: Untagged
@@ -621,6 +623,28 @@ MonoBehaviour:
   answerButtonParent: {fileID: 1870982703}
   questionDisplay: {fileID: 695587388}
   roundEndDisplay: {fileID: 1176016439}
+--- !u!114 &434374794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434374790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefd148df41baa645aa726db820a96db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &434374795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434374790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de358989920dbd64096f61e6f77d6d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &461541353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.39375, y: 0.2572927}
   m_AnchorMax: {x: 0.58874995, y: 0.29370734}
-  m_AnchoredPosition: {x: 1, y: 3.0004272}
+  m_AnchoredPosition: {x: 1, y: 3.0003967}
   m_SizeDelta: {x: 4, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793629947

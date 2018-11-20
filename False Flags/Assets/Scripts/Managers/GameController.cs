@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 
     private DataController dataController;
     private RoundData currentRoundData;
+    private TransitionFactData[] transitionFactData;
     private QuestionData[] questionPool;
 
     private bool isRoundActive;
@@ -32,6 +33,9 @@ public class GameController : MonoBehaviour {
     //variable for the flag image
     private Image questionFlag;
 
+    private GameObject infoT;
+    private Text infoText;
+
     // Use this for initialization
     void Start() {
         dataController = FindObjectOfType<DataController>();
@@ -39,7 +43,7 @@ public class GameController : MonoBehaviour {
         questionPool = currentRoundData.questions;
         timeRemaining = currentRoundData.timeLimitInSeconds;
         UpdateTimeRemaningDisplay();
-
+       
         //finds the game object with the "flag" tag and sets the questionflag variable to be its image component for flag image setting.
         questionFlag = GameObject.FindGameObjectWithTag("flag").GetComponent<Image>();
 
@@ -47,8 +51,9 @@ public class GameController : MonoBehaviour {
         progressBar = FindObjectOfType<Scrollbar>();
 
         ics = FindObjectOfType<InfoCardScript>(); // This will work because there actually IS only ONE animtor in the scene.
-        // If more are to be added tags will need to be used.
-
+                                                  // If more are to be added tags will need to be used.
+        infoT = GameObject.Find("Canvas/TransitionPanel/InfoText"); // Find the InfoText Game Object
+        infoText = infoT.GetComponent<UnityEngine.UI.Text>(); // Assigns the actual Text Component to the infoText variable.
         playerScore = 0;
         questionIndex = 0;
 
@@ -127,6 +132,7 @@ public class GameController : MonoBehaviour {
 
         if (questionIndex % 5 == 0 && questionIndex != 0)
         {
+            infoText.text = transitionFactData[0].fact;
             ics.SlideIn();
         }
     }

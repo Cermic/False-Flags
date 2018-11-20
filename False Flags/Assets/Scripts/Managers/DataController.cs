@@ -10,12 +10,14 @@ public class DataController : MonoBehaviour {
     private Randomiser randomiser;
     private RoundData[] allRoundData;
     private FlagData[] flagData;
+    private TransitionFactData[] transitionFactData;
     private PlayerProgress playerProgress;
     private string gameDataFile = "data.json";  //Initialised here but if game develops more modes this would need to be set elsewhere
     private string flagDataFile = "flag.json";
+    private string transitionFactDataFile = "transitionFacts.json";
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         DontDestroyOnLoad(gameObject);
         randomiser = GetComponent<Randomiser>();
         LoadGameData();
@@ -65,7 +67,8 @@ public class DataController : MonoBehaviour {
     {
         string filePath1 = Path.Combine(Application.streamingAssetsPath, gameDataFile);
         string filePath2 = Path.Combine(Application.streamingAssetsPath, flagDataFile);
-                //deserialisation
+        string filePath3 = Path.Combine(Application.streamingAssetsPath, transitionFactDataFile);
+        //deserialisation
         if (File.Exists(filePath1))
         {
             string dataAsJson = File.ReadAllText(filePath1);
@@ -87,6 +90,17 @@ public class DataController : MonoBehaviour {
         else
         {
             Debug.LogError("Cannot load game data.");
+        }
+        if (File.Exists(filePath3))
+        {
+            string dataAsJson = File.ReadAllText(filePath3);
+            GameData loadedData3 = JsonUtility.FromJson<GameData>(dataAsJson);
+
+            transitionFactData = loadedData3.transitionFactData;
+        }
+        else
+        {
+            Debug.LogError("Cannot load transition fact data.");
         }
     }
 }
