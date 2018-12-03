@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.IO;
 
@@ -9,6 +7,8 @@ public class GameDataEditor : EditorWindow {
     public GameData gameData;
 
     private string gameDataFilePath = "/StreamingAssets/data.json";
+
+    Vector2 scrollPosition = Vector2.zero;
 
     [MenuItem ("Window/Game Data Editor")]
     static void Init()
@@ -19,7 +19,10 @@ public class GameDataEditor : EditorWindow {
 
     void OnGUI()
     {
-        if(gameData != null)
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, true, true, 
+            GUILayout.Width(GetWindow<GameDataEditor>().position.width),
+            GUILayout.Height(GetWindow<GameDataEditor>().position.height));
+        if (gameData != null)
         {
             SerializedObject serializedObject = new SerializedObject(this);
             SerializedProperty serializedProperty = serializedObject.FindProperty("gameData");
@@ -37,6 +40,7 @@ public class GameDataEditor : EditorWindow {
         {
             LoadGameData();
         }
+        GUILayout.EndScrollView();
     }
 
     private void LoadGameData()
