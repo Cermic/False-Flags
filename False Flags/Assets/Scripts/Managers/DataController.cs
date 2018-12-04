@@ -75,13 +75,38 @@ public class DataController : MonoBehaviour {
 
     private void LoadGameData()
     {
-        string filePath1 = Path.Combine(Application.streamingAssetsPath, gameDataFile);
-        string filePath2 = Path.Combine(Application.streamingAssetsPath, flagDataFile);
-        string filePath3 = Path.Combine(Application.streamingAssetsPath, transitionFactDataFile);
+        string filePath1;
+        string filePath2;
+        string filePath3;
+        #if UNITY_EDITOR
+        
+            filePath1 = Path.Combine(Application.streamingAssetsPath, gameDataFile);
+            filePath2 = Path.Combine(Application.streamingAssetsPath, flagDataFile);
+            filePath3 = Path.Combine(Application.streamingAssetsPath, transitionFactDataFile);
+
+        #elif UNITY_ANDROID
+            filePath1 = Path.Combine("jar:file://" + Application.dataPath + "!assets/", gameDataFile);
+            filePath2 = Path.Combine("jar:file://" + Application.dataPath + "!assets/", flagDataFile);
+            filePath3 = Path.Combine("jar:file://" + Application.dataPath + "!assets/", transitionFactDataFile);
+        #elif UNITY_IOS
+            filePath1 = Path.Combine(Application.dataPath + "/Raw", gameDataFile);
+            filePath2 = Path.Combine(Application.dataPath + "/Raw", flagDataFile);
+            filePath3 = Path.Combine(Application.dataPath + "/Raw", transitionFactDataFile);
+        #endif
+
+
         //deserialisation
         if (File.Exists(filePath1))
         {
-            string dataAsJson = File.ReadAllText(filePath1);
+            string dataAsJson;
+            #if UNITY_EDITOR || UNITY_IOS
+            dataAsJson = File.ReadAllText(filePath1);
+            #elif UNITY_ANDROID
+            WWW reader = new WWW (filePath);
+            while (!reader.isDone){
+            }
+            dataAsJson = reader.text
+            #endif
             GameData loadedData1 = JsonUtility.FromJson<GameData>(dataAsJson);
 
             allRoundData = loadedData1.allRoundData;
