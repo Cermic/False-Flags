@@ -100,12 +100,10 @@ public class DataController : MonoBehaviour {
         {
             string dataAsJson;
             #if UNITY_EDITOR || UNITY_IOS
-            dataAsJson = File.ReadAllText(filePath1);
+                dataAsJson = File.ReadAllText(filePath1);
+
             #elif UNITY_ANDROID
-            WWW reader = new WWW (filePath);
-            while (!reader.isDone){
-            }
-            dataAsJson = reader.text
+                dataAsJson = System.IO.File.ReadAllText(filePath1);
             #endif
             GameData loadedData1 = JsonUtility.FromJson<GameData>(dataAsJson);
 
