@@ -18,6 +18,13 @@ public class GameController : MonoBehaviour {
     private TransitionFactData[] transitionFactData;
     private QuestionData[] questionPool;
 
+    //wrong answer variables
+    private string[] wrongAnswers;
+    private string[] passAnswers;
+    private int num_wrong_answers;
+    private string correct_answer;
+    private int round;
+
     private bool isRoundActive;
     private float timeRemaining;
     private int questionIndex;
@@ -43,7 +50,18 @@ public class GameController : MonoBehaviour {
         questionPool = currentRoundData.questions;
         timeRemaining = currentRoundData.timeLimitInSeconds;
         UpdateTimeRemaningDisplay();
-       
+
+        //Set wrong answer variables
+        num_wrong_answers = 0;
+        wrongAnswers = new string[5];
+        round = 1;
+
+        playerScore = 0;
+        initialise();
+
+    }
+    void initialise()
+    {
         //finds the game object with the "flag" tag and sets the questionflag variable to be its image component for flag image setting.
         questionFlag = GameObject.FindGameObjectWithTag("flag").GetComponent<Image>();
 
@@ -54,12 +72,11 @@ public class GameController : MonoBehaviour {
                                                   // If more are to be added tags will need to be used.
         infoT = GameObject.Find("Canvas/TransitionPanel/InfoText"); // Find the InfoText Game Object
         infoText = infoT.GetComponent<UnityEngine.UI.Text>(); // Assigns the actual Text Component to the infoText variable.
-        playerScore = 0;
+
         questionIndex = 0;
 
         ShowQuestion();
         isRoundActive = true;
-
     }
 
     /// <summary>
@@ -84,11 +101,11 @@ public class GameController : MonoBehaviour {
             if (questionData.answers[i].isCorrect==true)
             {
                 flagFilePath = questionData.answers[i].answerText;
+                correct_answer = questionData.answers[i].answerText;                            //used while saving wrong answers
                 break;
             }
         }
 
-        //questionFlag.sprite = Resources.Load("filepath", typeof(Sprite)) as Sprite;
         questionFlag.sprite = Resources.Load<Sprite>("Images/" + flagFilePath);
             
 
@@ -117,8 +134,26 @@ public class GameController : MonoBehaviour {
     {
         if (isCorrect)
         {
-            playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+            if(currentRoundData.name == "Wrong Answers")
+            {            
+                if(currentRoundData.questions[questionIndex].questionText == "Bonus question: 15 points!")          //hard coded = bad
+                {
+                    playerScore += (currentRoundData.pointsAddedForCorrectAnswer)*3;
+                }
+                else
+                {
+                    playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+                }
+            }
+            else
+            {
+                playerScore += currentRoundData.pointsAddedForCorrectAnswer;
+            }
             scoreDisplayText.text = "Score: " + playerScore.ToString();
+        }else if(!isCorrect && num_wrong_answers<5 && currentRoundData.name!= "Wrong Answers")                                 //Populates an array with up to 5 mistakes
+        {
+            wrongAnswers[num_wrong_answers] = correct_answer;
+            num_wrong_answers++;
         }
 
         if (questionPool.Length > questionIndex + 1)
@@ -126,26 +161,41 @@ public class GameController : MonoBehaviour {
             questionIndex++;
             ShowQuestion();
         }
-        else
+        else if(round ==2)
         {
             questionIndex++;
             EndRound();
         }
+        else
+        {
+            passAnswers = new string[num_wrong_answers];
+            for (int i = 0; i < num_wrong_answers; i++)
+            {
+                passAnswers[i] = wrongAnswers[i];
+            }
+            currentRoundData = dataController.GetCurrentRoundData(passAnswers, num_wrong_answers);
+            questionPool = currentRoundData.questions;
+            timeRemaining = currentRoundData.timeLimitInSeconds;
+            UpdateTimeRemaningDisplay();
+            initialise();
+            round++;
+        }
         if (questionIndex % 5 == 0 && questionIndex != 0)
         {
-            infoText.text = dataController.GetInfoData();///////////////////////////////////////////////////////////////////////////////////////
+            infoText.text = dataController.GetInfoData();
             ics.SlideIn();
         }
     }
 
     public void EndRound()
     {
-        isRoundActive = false;
-        dataController.SubmitNewPlayerScore(playerScore);
-        highScoreDisplay.text = "High score: " + dataController.GetHighestPlayerScore().ToString();
 
-        questionDisplay.SetActive (false);
-        roundEndDisplay.SetActive (true);
+            isRoundActive = false;
+            dataController.SubmitNewPlayerScore(playerScore);
+            highScoreDisplay.text = "High score: " + dataController.GetHighestPlayerScore().ToString();
+
+            questionDisplay.SetActive(false);
+            roundEndDisplay.SetActive(true);
     }
 
     public void ReturnToMenu()

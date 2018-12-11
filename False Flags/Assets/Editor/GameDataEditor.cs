@@ -6,7 +6,7 @@ public class GameDataEditor : EditorWindow {
 
     public GameData gameData;
 
-    private string gameDataFilePath = "/StreamingAssets/flag.json";
+    private string gameDataFilePath = "/StreamingAssets/data.json";
 
     Vector2 scrollPosition = Vector2.zero;
 
