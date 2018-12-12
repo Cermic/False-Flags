@@ -85,9 +85,9 @@ public class DataController : MonoBehaviour {
             filePath3 = Path.Combine(Application.streamingAssetsPath, transitionFactDataFile);
 
         #elif UNITY_ANDROID
-            filePath1 = Path.Combine("jar:file://" + Application.dataPath + "!assets/", gameDataFile);
-            filePath2 = Path.Combine("jar:file://" + Application.dataPath + "!assets/", flagDataFile);
-            filePath3 = Path.Combine("jar:file://" + Application.dataPath + "!assets/", transitionFactDataFile);
+            filePath1 = Path.Combine("jar:file://" + Application.dataPath + "!/streamingAssets/",  gameDataFile);
+            filePath2 = Path.Combine("jar:file://" + Application.dataPath + "!/streamingAssets/",  flagDataFile);
+            filePath3 = Path.Combine("jar:file://" + Application.dataPath + "!/streamingAssets/",  transitionFactDataFile);
         #elif UNITY_IOS
             filePath1 = Path.Combine(Application.dataPath + "/Raw", gameDataFile);
             filePath2 = Path.Combine(Application.dataPath + "/Raw", flagDataFile);
@@ -103,10 +103,10 @@ public class DataController : MonoBehaviour {
                 dataAsJson = File.ReadAllText(filePath1);
 
             #elif UNITY_ANDROID
-                dataAsJson = System.IO.File.ReadAllText(filePath1);
+                dataAsJson = File.ReadAllText(filePath1);
             #endif
             GameData loadedData1 = JsonUtility.FromJson<GameData>(dataAsJson);
-
+            
             allRoundData = loadedData1.allRoundData;
         }
         else
