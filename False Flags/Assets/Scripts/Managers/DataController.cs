@@ -9,6 +9,7 @@ public class DataController : MonoBehaviour {
 
     private Randomiser randomiser;
     private RoundData[] allRoundData;
+    private RoundData[] wrongData;
     private FlagData[] flagData;
     private TransitionFactData[] transitionFactData;
     private PlayerProgress playerProgress;
@@ -29,6 +30,11 @@ public class DataController : MonoBehaviour {
     {
         randomiser.RandomGeneration(allRoundData, flagData);
         return allRoundData[0];                     //return allRoundData[index];
+    }
+    public RoundData GetCurrentRoundData(string[] x, int y) //public RoundData GetCurrentRoundData(int index)
+    {
+        randomiser.RandomGeneration(allRoundData, flagData,x,y);
+        return allRoundData[1];                     //return allRoundData[index];
     }
     private int RandomNumber(int num)
     {
