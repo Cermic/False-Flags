@@ -78,16 +78,15 @@ public class DataController : MonoBehaviour {
         string filePath1;
         string filePath2;
         string filePath3;
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR || UNITY_STANDALONE
         
             filePath1 = Path.Combine(Application.streamingAssetsPath, gameDataFile);
             filePath2 = Path.Combine(Application.streamingAssetsPath, flagDataFile);
             filePath3 = Path.Combine(Application.streamingAssetsPath, transitionFactDataFile);
-
         #elif UNITY_ANDROID
-            filePath1 = Path.Combine("jar:file://" + Application.dataPath + "!/streamingAssets/",  gameDataFile);
-            filePath2 = Path.Combine("jar:file://" + Application.dataPath + "!/streamingAssets/",  flagDataFile);
-            filePath3 = Path.Combine("jar:file://" + Application.dataPath + "!/streamingAssets/",  transitionFactDataFile);
+            filePath1 = Path.Combine(Application.streamingAssetsPath, gameDataFile);
+            filePath2 = Path.Combine(Application.streamingAssetsPath, flagDataFile);
+            filePath3 = Path.Combine(Application.streamingAssetsPath, transitionFactDataFile);
         #elif UNITY_IOS
             filePath1 = Path.Combine(Application.dataPath + "/Raw", gameDataFile);
             filePath2 = Path.Combine(Application.dataPath + "/Raw", flagDataFile);
@@ -96,44 +95,49 @@ public class DataController : MonoBehaviour {
 
 
         //deserialisation
-        if (File.Exists(filePath1))
-        {
-            string dataAsJson;
-            #if UNITY_EDITOR || UNITY_IOS
-                dataAsJson = File.ReadAllText(filePath1);
+        string dataAsJson;
+        //load file 1
+     
+        #if UNITY_EDITOR || UNITY_IOS || UNITY_STANDALONE
+            dataAsJson = File.ReadAllText(filePath1);
 
-            #elif UNITY_ANDROID
-                dataAsJson = File.ReadAllText(filePath1);
-            #endif
-            GameData loadedData1 = JsonUtility.FromJson<GameData>(dataAsJson);
+        #elif UNITY_ANDROID
+            WWW reader1 = new WWW (filePath1);
+            while (!reader1.isDone) {
+            }
+            dataAsJson = reader1.text;
+        #endif
+        GameData loadedData1 = JsonUtility.FromJson<GameData>(dataAsJson);
             
-            allRoundData = loadedData1.allRoundData;
-        }
-        else
-        {
-            Debug.LogError("Cannot load game data.");
-        }
-        if (File.Exists(filePath2))
-        {
-            string dataAsJson = File.ReadAllText(filePath2);
-            GameData loadedData2 = JsonUtility.FromJson<GameData>(dataAsJson);
+        allRoundData = loadedData1.allRoundData;
 
-            flagData = loadedData2.flagData;
-        }
-        else
-        {
-            Debug.LogError("Cannot load game data.");
-        }
-        if (File.Exists(filePath3))
-        {
-            string dataAsJson = File.ReadAllText(filePath3);
-            GameData loadedData3 = JsonUtility.FromJson<GameData>(dataAsJson);
+        //load file 2
+        #if UNITY_EDITOR || UNITY_IOS || UNITY_STANDALONE
+            dataAsJson = File.ReadAllText(filePath2);
 
-            transitionFactData = loadedData3.transitionFactData;
-        }
-        else
-        {
-            Debug.LogError("Cannot load transition fact data.");
-        }
+        #elif UNITY_ANDROID
+            WWW reader2 = new WWW (filePath2);
+            while (!reader2.isDone) {
+            }
+            dataAsJson = reader2.text;
+        #endif
+        GameData loadedData2 = JsonUtility.FromJson<GameData>(dataAsJson);
+
+        flagData = loadedData2.flagData;
+
+        //load file 3
+        #if UNITY_EDITOR || UNITY_IOS || UNITY_STANDALONE
+            dataAsJson = File.ReadAllText(filePath3);
+
+        #elif UNITY_ANDROID
+            WWW reader3 = new WWW (filePath3);
+            while (!reader3.isDone) {
+            }
+            dataAsJson = reader3.text;
+        #endif
+        GameData loadedData3 = JsonUtility.FromJson<GameData>(dataAsJson);
+
+        transitionFactData = loadedData3.transitionFactData;
+        
     }
 }

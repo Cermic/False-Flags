@@ -710,9 +710,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 80019ffc-5958-4517-a234-b410d1c947c9
+  cloudProjectId: 49b6f12a-f148-4e55-939e-3f93c9222409
   projectName: False Flags
-  organizationId: cermic
+  organizationId: john-smith-3117817
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
