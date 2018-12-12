@@ -710,9 +710,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 49b6f12a-f148-4e55-939e-3f93c9222409
+  cloudProjectId: 9dc8177f-a3f6-46cc-9b8e-cd5df50e52db
   projectName: False Flags
-  organizationId: john-smith-3117817
+  organizationId: sephiroth198
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
