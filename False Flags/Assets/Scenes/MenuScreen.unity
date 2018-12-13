@@ -317,7 +317,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\"Getting it Done & Werq\" Kevin MacLeod (incompetech.com)\r\nLicensed
+  m_Text: "\"Getting it Done\" & \"Werq\" Kevin MacLeod (incompetech.com)\r\nLicensed
     under Creative Commons: By Attribution 3.0 License\r\nhttp://creativecommons.org/licenses/by/3.0/\n\n"
 --- !u!222 &93775919
 CanvasRenderer:
