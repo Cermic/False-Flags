@@ -219,7 +219,7 @@ public class GameController : MonoBehaviour {
             //sets the amount of steps in the progress bar to be the same as the total number of questions.
             progressBar.numberOfSteps = questionPool.Length;
             //changes the value (position) of the progress bars highlighted element to indicate the current question using its index
-            progressBar.value = (Mathf.Round(100f / progressBar.numberOfSteps)/100) * questionIndex;
+            progressBar.value = 1f - (((float)questionPool.Length - 1f) - (float)questionIndex) / ((float)questionPool.Length - 1f);
             //scales the size of the highlighted progress bar element to be in relation to the total number of questions, i.e. if there are 2 questions it will take up 50%
             progressBar.size = 1f / questionPool.Length;
 
