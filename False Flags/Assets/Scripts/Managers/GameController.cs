@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour {
             {            
                 if(currentRoundData.questions[questionIndex].questionText == "Bonus question: 15 points!")          //hard coded = bad
                 {
-                    playerScore += (currentRoundData.pointsAddedForCorrectAnswer)*3;
+                    playerScore += (currentRoundData.pointsAddedForCorrectAnswer) * 3;
                 }
                 else
                 {
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour {
                 playerScore += currentRoundData.pointsAddedForCorrectAnswer;
             }
             scoreDisplayText.text = "Score: " + playerScore.ToString();
-        }else if(!isCorrect && num_wrong_answers<5 && currentRoundData.name!= "Wrong Answers")                                 //Populates an array with up to 5 mistakes
+        }else if(!isCorrect && num_wrong_answers < 5 && currentRoundData.name != "Wrong Answers")                                 //Populates an array with up to 5 mistakes
         {
             wrongAnswers[num_wrong_answers] = correct_answer;
             num_wrong_answers++;
